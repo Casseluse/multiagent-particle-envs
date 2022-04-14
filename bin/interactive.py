@@ -17,11 +17,18 @@ if __name__ == '__main__':
     scenario = scenarios.load(args.scenario).Scenario()
     # create world
     world = scenario.make_world()
+    # animation check point passed
+
+
     # create multiagent environment
     env = MultiAgentEnv(world, scenario.reset_world, scenario.reward, scenario.observation, info_callback=None, shared_viewer = False)
     # render call to create viewer window (necessary only for interactive policies)
+    # animation check point passed
+
     env.render()
+    # animation controller
     # create interactive policies for each agent
+
     policies = [InteractivePolicy(env,i) for i in range(env.n)]
     # execution loop
     obs_n = env.reset()
