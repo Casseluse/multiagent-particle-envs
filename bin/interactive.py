@@ -14,7 +14,7 @@ import multiagent.scenarios as scenarios
 if __name__ == '__main__':
     # parse arguments
     parser = argparse.ArgumentParser(description=None)
-    parser.add_argument('-s', '--scenario', default='simple.py', help='Path of the scenario Python script.')
+    parser.add_argument('-s', '--scenario', default='simple_spread.py', help='Path of the scenario Python script.')
     args = parser.parse_args()
 
     # load scenario from script
@@ -40,8 +40,8 @@ if __name__ == '__main__':
         # query for action from each agent's policy
         act_n = []
         for i, policy in enumerate(policies):
-            #act_n.append(policy.action(obs_n[i]))
-            act_n.append(np.concatenate([[random.randint(0, 1)], np.zeros(4)]))
+            act_n.append(policy.action(obs_n[i]))
+            #act_n.append(np.concatenate([[random.randint(0, 1)], np.zeros(4)]))
         # step environment
         obs_n, reward_n, done_n, _ = env.step(act_n)
         # render all agent views
